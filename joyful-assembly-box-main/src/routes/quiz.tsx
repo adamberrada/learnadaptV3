@@ -51,58 +51,8 @@ type QuizSubmissionResponse = {
   passed: boolean;
 };
 
-const demoQuestions: Q[] = [
-  {
-    id: "demo-1",
-    question: "What does the Protégé Effect describe?",
-    options: [
-      { id: "demo-1-a", text: "Memorising material by re-reading it" },
-      { id: "demo-1-b", text: "Learning more deeply by explaining a concept to someone else", correct: true },
-      { id: "demo-1-c", text: "Studying with background music" },
-      { id: "demo-1-d", text: "Spacing study sessions over time" },
-    ],
-    correctIndex: 1,
-  },
-  {
-    id: "demo-2",
-    question:
-      "In a Cognitive Load Heatmap, what does a red cell most often mean?",
-    options: [
-      { id: "demo-2-a", text: "The lesson was skipped" },
-      { id: "demo-2-b", text: "Most students finished quickly" },
-      { id: "demo-2-c", text: "Massive blockage — content should likely be rewritten", correct: true },
-      { id: "demo-2-d", text: "The teacher hasn't reviewed it yet" },
-    ],
-    correctIndex: 2,
-  },
-  {
-    id: "demo-3",
-    question:
-      "Which signal is NOT used to detect that a student is blocked on a concept?",
-    options: [
-      { id: "demo-3-a", text: "Repeated failures on the same question" },
-      { id: "demo-3-b", text: "Abnormally long time on a passage" },
-      { id: "demo-3-c", text: "Multiple re-reads without score progress" },
-      { id: "demo-3-d", text: "Number of friends online", correct: true },
-    ],
-    correctIndex: 3,
-  },
-  {
-    id: "demo-4",
-    question: "What triggers a Peer Struggle Matching session?",
-    options: [
-      { id: "demo-4-a", text: "A teacher manually pairs students" },
-      {
-        id: "demo-4-b",
-        text: "Two or more students are blocked on the same concept at the same time",
-        correct: true,
-      },
-      { id: "demo-4-c", text: "A student fails any quiz" },
-      { id: "demo-4-d", text: "Once a week on Sundays" },
-    ],
-    correctIndex: 1,
-  },
-];
+// Use only backend-provided questions. If no backend quiz is returned,
+// the page will show a helpful "no quiz" message instead of demo content.
 
 function QuizPage() {
   const [chapterId, setChapterId] = useState<string>(() => {
@@ -133,7 +83,7 @@ function QuizPage() {
 
   const questions: Q[] = useMemo(() => {
     const backend = quiz?.questions;
-    if (!backend || backend.length === 0) return demoQuestions;
+    if (!backend || backend.length === 0) return [];
 
     return backend.map((q) => {
       const options = (q.options ?? []).map((o) => ({
@@ -175,8 +125,28 @@ function QuizPage() {
 
     (async () => {
       try {
+        // Attach dev auth headers from localStorage (client) or env (client/server)
+        // so dev requests are authorized even without a full auth integration.
+        const envVars = (import.meta as any)?.env ?? {};
+        const headers: Record<string, string> = {};
+        try {
+          if (typeof window !== "undefined") {
+            const sid = window.localStorage.getItem("la-dev-user-id");
+            const srole = window.localStorage.getItem("la-dev-user-role");
+            if (sid) headers["X-User-Id"] = sid;
+            if (srole) headers["X-User-Role"] = srole;
+          }
+        } catch {}
+
+        // Server-side or build-time env fallbacks. Try multiple keys to be robust.
+        const maybeEnvId = envVars.VITE_DEV_USER_ID ?? envVars.DEV_USER_ID ?? (typeof process !== 'undefined' ? (process.env && process.env.DEV_USER_ID) : undefined);
+        const maybeEnvRole = envVars.VITE_DEV_USER_ROLE ?? envVars.DEV_USER_ROLE ?? (typeof process !== 'undefined' ? (process.env && process.env.DEV_USER_ROLE) : undefined);
+        if (!headers["X-User-Id"] && maybeEnvId) headers["X-User-Id"] = maybeEnvId;
+        if (!headers["X-User-Role"] && maybeEnvRole) headers["X-User-Role"] = maybeEnvRole;
+
         const res = await fetch(`/api/learner/quizzes/chapter/${encodeURIComponent(chapterId)}`, {
           signal: controller.signal,
+          headers,
         });
 
         const payload = (await res.json().catch(() => null)) as ApiResponse<QuizResponse> | null;
@@ -216,6 +186,13 @@ function QuizPage() {
     setSubmitError(null);
   }, [quiz?.id]);
 
+  // If the available questions change and the current index is out of range,
+  // clamp it to avoid reading undefined `q` during renders.
+  useEffect(() => {
+    if (questions.length === 0) return;
+    if (index >= questions.length) setIndex(0);
+  }, [questions.length, index]);
+
   const confirm = () => {
     if (selected === null) return;
     setConfirmed(true);
@@ -238,9 +215,22 @@ function QuizPage() {
     setSubmitError(null);
 
     try {
+      const clientEnv = (import.meta as any)?.env ?? {};
+      const devHeaders: Record<string, string> = { "content-type": "application/json" };
+      try {
+        if (typeof window !== "undefined") {
+          const sid = window.localStorage.getItem("la-dev-user-id");
+          const srole = window.localStorage.getItem("la-dev-user-role");
+          if (sid) devHeaders["X-User-Id"] = sid;
+          if (srole) devHeaders["X-User-Role"] = srole;
+        }
+      } catch {}
+      if (!devHeaders["X-User-Id"] && clientEnv.VITE_DEV_USER_ID) devHeaders["X-User-Id"] = clientEnv.VITE_DEV_USER_ID;
+      if (!devHeaders["X-User-Role"] && clientEnv.VITE_DEV_USER_ROLE) devHeaders["X-User-Role"] = clientEnv.VITE_DEV_USER_ROLE;
+
       const res = await fetch(`/api/learner/quizzes/${encodeURIComponent(quiz.id)}/submit`, {
         method: "POST",
-        headers: { "content-type": "application/json" },
+        headers: devHeaders,
         body: JSON.stringify({ answers: answerList }),
       });
 
@@ -426,7 +416,7 @@ function QuizPage() {
         )}
       </div>
 
-      <div className="flex items-center justify-between">
+      {/* <div className="flex items-center justify-between">
         <div>
           <p className="text-sm font-medium text-accent">
             Cognitive Science · Quiz
@@ -441,164 +431,177 @@ function QuizPage() {
         <p className="text-sm font-semibold">
           Score <span className="text-primary">{score}</span> / {questions.length}
         </p>
-      </div>
+      </div> */}
 
-      {/* Progress dots */}
-      <div className="mt-6 flex items-center gap-2">
-        {questions.map((_, i) => (
-          <div
-            key={i}
-            className={`h-2 flex-1 rounded-full transition-colors ${
-              i < index
-                ? "bg-success"
-                : i === index
-                  ? "bg-primary"
-                  : "bg-secondary"
-            }`}
-          />
-        ))}
-      </div>
-
-      <div className="mt-10 rounded-2xl border border-border bg-card p-8 shadow-card">
-        <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-          Question {index + 1} of {questions.length}
-        </p>
-        <h2 className="mt-2 font-display text-2xl font-semibold leading-snug">
-          {q.question}
-        </h2>
-
-        <div className="mt-6 space-y-3">
-          {q.options.map((opt, i) => {
-            const letter = String.fromCharCode(65 + i);
-            const isSelected = selected === i;
-            const showCorrect = confirmed && q.correctIndex !== null && i === q.correctIndex;
-            const showWrong =
-              confirmed &&
-              isSelected &&
-              q.correctIndex !== null &&
-              i !== q.correctIndex;
-            return (
-              <button
+      {questions.length === 0 && !quizLoading ? (
+        <div className="mt-6 rounded-2xl border border-border bg-card p-6 shadow-card">
+          <p className="text-sm font-medium text-foreground">No published quiz found for this chapter.</p>
+          <p className="mt-1 text-sm text-muted-foreground">If you're a teacher, create a quiz via the teacher UI or try a different chapterId.</p>
+        </div>
+      ) : !q ? (
+        <div className="mt-6 rounded-2xl border border-border bg-card p-6 shadow-card">
+          <p className="text-sm font-medium text-foreground">Loading question…</p>
+        </div>
+      ) : (
+        <>
+          {/* Progress dots */}
+          <div className="mt-6 flex items-center gap-2">
+            {questions.map((_, i) => (
+              <div
                 key={i}
-                disabled={confirmed}
-                onClick={() => setSelected(i)}
-                className={`flex w-full items-center gap-4 rounded-xl border p-4 text-left transition-all ${
-                  showCorrect
-                    ? "border-success bg-success/10"
-                    : showWrong
-                      ? "border-danger bg-danger/10"
-                      : isSelected
-                        ? "border-primary bg-primary/5"
-                        : "border-border bg-card hover:border-primary/40"
+                className={`h-2 flex-1 rounded-full transition-colors ${
+                  i < index
+                    ? "bg-success"
+                    : i === index
+                      ? "bg-primary"
+                      : "bg-secondary"
+                }`}
+              />
+            ))}
+          </div>
+
+          <div className="mt-10 rounded-2xl border border-border bg-card p-8 shadow-card">
+            <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+              Question {index + 1} of {questions.length}
+            </p>
+            <h2 className="mt-2 font-display text-2xl font-semibold leading-snug">
+              {q.question}
+            </h2>
+
+            <div className="mt-6 space-y-3">
+              {q.options.map((opt, i) => {
+                const letter = String.fromCharCode(65 + i);
+                const isSelected = selected === i;
+                const showCorrect = confirmed && q.correctIndex !== null && i === q.correctIndex;
+                const showWrong =
+                  confirmed &&
+                  isSelected &&
+                  q.correctIndex !== null &&
+                  i !== q.correctIndex;
+                return (
+                  <button
+                    key={i}
+                    disabled={confirmed}
+                    onClick={() => setSelected(i)}
+                    className={`flex w-full items-center gap-4 rounded-xl border p-4 text-left transition-all ${
+                      showCorrect
+                        ? "border-success bg-success/10"
+                        : showWrong
+                          ? "border-danger bg-danger/10"
+                          : isSelected
+                            ? "border-primary bg-primary/5"
+                            : "border-border bg-card hover:border-primary/40"
+                    }`}
+                  >
+                    <span
+                      className={`grid h-9 w-9 shrink-0 place-items-center rounded-full text-sm font-semibold ${
+                        showCorrect
+                          ? "bg-success text-white"
+                          : showWrong
+                            ? "bg-danger text-white"
+                            : isSelected
+                              ? "bg-primary text-primary-foreground"
+                              : "bg-secondary text-foreground"
+                      }`}
+                    >
+                      {showCorrect ? (
+                        <Check className="h-4 w-4" />
+                      ) : showWrong ? (
+                        <X className="h-4 w-4" />
+                      ) : (
+                        letter
+                      )}
+                    </span>
+                    <span className="text-sm font-medium">{opt.text}</span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {confirmed && (
+              <div
+                className={`mt-6 rounded-xl p-4 text-sm ${
+                  q.correctIndex === null
+                    ? "bg-secondary/40 text-muted-foreground"
+                    : isCorrect
+                      ? "bg-success/10 text-success"
+                      : "bg-danger/10 text-danger"
                 }`}
               >
-                <span
-                  className={`grid h-9 w-9 shrink-0 place-items-center rounded-full text-sm font-semibold ${
-                    showCorrect
-                      ? "bg-success text-white"
-                      : showWrong
-                        ? "bg-danger text-white"
-                        : isSelected
-                          ? "bg-primary text-primary-foreground"
-                          : "bg-secondary text-foreground"
-                  }`}
-                >
-                  {showCorrect ? (
-                    <Check className="h-4 w-4" />
-                  ) : showWrong ? (
-                    <X className="h-4 w-4" />
-                  ) : (
-                    letter
-                  )}
-                </span>
-                <span className="text-sm font-medium">{opt.text}</span>
-              </button>
-            );
-          })}
-        </div>
-
-        {confirmed && (
-          <div
-            className={`mt-6 rounded-xl p-4 text-sm ${
-              q.correctIndex === null
-                ? "bg-secondary/40 text-muted-foreground"
-                : isCorrect
-                  ? "bg-success/10 text-success"
-                  : "bg-danger/10 text-danger"
-            }`}
-          >
-            <p className="font-semibold">
-              {q.correctIndex === null
-                ? "Answer saved."
-                : isCorrect
-                  ? "Correct."
-                  : "Not quite."}
-            </p>
-            {q.correctIndex !== null && (
-              <p className="mt-1 text-foreground/80">
-                Correct answer: {q.options[q.correctIndex]?.text}
-              </p>
-            )}
-          </div>
-        )}
-
-        {confirmed && !isCorrect && (
-          <div className="mt-4 rounded-xl border border-border bg-secondary/40 p-4 text-sm">
-            <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-              AI remediation
-            </p>
-
-            {aiSource && (
-              <p className="mt-1 text-xs text-muted-foreground">
-                Source: {aiSource === "cloud" ? "cloud" : "local fallback"}
-              </p>
-            )}
-
-            {aiLoading && (
-              <p className="mt-2 text-sm text-muted-foreground">
-                Generating a personalised explanation…
-              </p>
-            )}
-
-            {aiError && (
-              <p className="mt-2 text-sm text-muted-foreground">
-                {aiError}
-              </p>
-            )}
-
-            {aiText && (
-              <div className="mt-2 whitespace-pre-wrap text-sm text-foreground">
-                {aiText}
+                <p className="font-semibold">
+                  {q.correctIndex === null
+                    ? "Answer saved."
+                    : isCorrect
+                      ? "Correct."
+                      : "Not quite."}
+                </p>
+                {q.correctIndex !== null && (
+                  <p className="mt-1 text-foreground/80">
+                    Correct answer: {q.options[q.correctIndex]?.text}
+                  </p>
+                )}
               </div>
             )}
 
-            {!aiLoading && !aiText && !aiError && (
-              <p className="mt-2 text-sm text-muted-foreground">
-                Waiting for your answer…
-              </p>
-            )}
-          </div>
-        )}
+            {confirmed && !isCorrect && (
+              <div className="mt-4 rounded-xl border border-border bg-secondary/40 p-4 text-sm">
+                <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                  AI remediation
+                </p>
 
-        <div className="mt-6 flex justify-end">
-          {!confirmed ? (
-            <button
-              onClick={confirm}
-              disabled={selected === null}
-              className="rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground disabled:opacity-40"
-            >
-              Confirm answer
-            </button>
-          ) : (
-            <button
-              onClick={next}
-              className="rounded-md bg-foreground px-5 py-2.5 text-sm font-semibold text-background"
-            >
-              {index + 1 === questions.length ? "See results" : "Next question"}
-            </button>
-          )}
-        </div>
-      </div>
+                {aiSource && (
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    Source: {aiSource === "cloud" ? "cloud" : "local fallback"}
+                  </p>
+                )}
+
+                {aiLoading && (
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    Generating a personalised explanation…
+                  </p>
+                )}
+
+                {aiError && (
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    {aiError}
+                  </p>
+                )}
+
+                {aiText && (
+                  <div className="mt-2 whitespace-pre-wrap text-sm text-foreground">
+                    {aiText}
+                  </div>
+                )}
+
+                {!aiLoading && !aiText && !aiError && (
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    Waiting for your answer…
+                  </p>
+                )}
+              </div>
+            )}
+
+            <div className="mt-6 flex justify-end">
+              {!confirmed ? (
+                <button
+                  onClick={confirm}
+                  disabled={selected === null}
+                  className="rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground disabled:opacity-40"
+                >
+                  Confirm answer
+                </button>
+              ) : (
+                <button
+                  onClick={next}
+                  className="rounded-md bg-foreground px-5 py-2.5 text-sm font-semibold text-background"
+                >
+                  {index + 1 === questions.length ? "See results" : "Next question"}
+                </button>
+              )}
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }

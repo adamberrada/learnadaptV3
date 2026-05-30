@@ -32,9 +32,10 @@ public class WebSecurityConfig {
                 .headers(headers -> headers.frameOptions(frameOptions -> frameOptions.sameOrigin()))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/h2-console/**").permitAll()
-                        .requestMatchers("/api/debug/**").permitAll()
-                        .anyRequest().authenticated()
+                    .requestMatchers("/h2-console/**").permitAll()
+                    .requestMatchers("/api/debug/**").permitAll()
+                    .requestMatchers("/api/public/**").permitAll()
+                    .anyRequest().authenticated()
                 )
                 .addFilterBefore(new HeaderAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 

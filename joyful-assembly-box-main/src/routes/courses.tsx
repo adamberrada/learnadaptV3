@@ -127,9 +127,20 @@ function CoursesPage() {
                 </div>
               )}
 
-              <button className="mt-5 w-full rounded-md bg-primary px-3 py-2 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-px">
-                {c.progress !== undefined ? "Continue" : "Enroll"}
-              </button>
+              <div className="mt-5 flex gap-2">
+                <a
+                  href={`/lesson?chapterId=ch-${c.id}`}
+                  className="inline-block w-full rounded-md bg-primary px-3 py-2 text-center text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-px"
+                >
+                  {c.progress !== undefined ? "Continue" : "Enroll"}
+                </a>
+                <a
+                  href={`/teacher-lesson?courseId=${c.id}&chapterId=ch-${c.id}`}
+                  className="inline-block rounded-md border border-border bg-card px-3 py-2 text-center text-sm font-semibold text-muted-foreground hover:text-foreground"
+                >
+                  Add Lesson
+                </a>
+              </div>
             </div>
           </article>
         ))}

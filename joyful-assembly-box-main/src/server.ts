@@ -56,23 +56,50 @@ function selectBackendBaseUrl(env: unknown, pathname: string): string | null {
   if (
     pathname.startsWith("/api/teacher/lessons") ||
     pathname.startsWith("/api/admin/lessons") ||
-    pathname.startsWith("/api/learner/lessons")
+    pathname.startsWith("/api/learner/lessons") ||
+    // Public lesson read endpoints should also route to the quiz-service
+    pathname.startsWith("/api/public/lessons")
   ) {
     return resolveBaseUrl(env, "QUIZ_SERVICE_URL", "http://localhost:8083");
+  }
+
+  // Internal AI endpoints
+  if (pathname.startsWith("/api/internal/ai") || pathname.startsWith("/api/internal/ai/")) {
+    return resolveBaseUrl(env, "AI_SERVICE_URL", "http://localhost:8086");
+  }
+
+  // Internal notification dispatcher
+  if (pathname.startsWith("/api/internal/notifications") || pathname.startsWith("/api/internal/notifications/")) {
+    return resolveBaseUrl(env, "NOTIFICATION_SERVICE_URL", "http://localhost:8084");
+  }
+
+  // Internal analytics event ingestion
+  if (pathname.startsWith("/api/internal/analytics") || pathname.startsWith("/api/internal/analytics/")) {
+    return resolveBaseUrl(env, "ANALYTICS_SERVICE_URL", "http://localhost:8085");
   }
 
   if (pathname.startsWith("/api/teacher/courses")) {
     return resolveBaseUrl(env, "COURSE_SERVICE_URL", "http://localhost:8082");
   }
 
-  // Course service owns the remaining role-based course APIs.
+  // Course service: be explicit about course-related endpoints only.
   if (
-    pathname.startsWith("/api/public") ||
-    pathname.startsWith("/api/learner") ||
-    pathname.startsWith("/api/teacher") ||
-    pathname.startsWith("/api/admin")
+    pathname.startsWith("/api/public/courses") ||
+    pathname.startsWith("/api/learner/courses") ||
+    pathname.startsWith("/api/teacher/courses") ||
+    pathname.startsWith("/api/admin/courses") ||
+    pathname.startsWith("/api/courses") ||
+    pathname.startsWith("/api/public/chapters") ||
+    pathname.startsWith("/api/learner/chapters") ||
+    pathname.startsWith("/api/teacher/chapters") ||
+    pathname.startsWith("/api/admin/chapters")
   ) {
     return resolveBaseUrl(env, "COURSE_SERVICE_URL", "http://localhost:8082");
+  }
+
+  // Platform-level endpoints (explicit)
+  if (pathname.startsWith("/api/platform") || pathname.startsWith("/api/public/platform") || pathname.startsWith("/api/admin/platform")) {
+    return resolveBaseUrl(env, "PLATFORM_SERVICE_URL", "http://localhost:8087");
   }
 
   return null;

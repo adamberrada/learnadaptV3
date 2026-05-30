@@ -10,10 +10,12 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TeacherQuizRouteImport } from './routes/teacher-quiz'
+import { Route as TeacherLessonRouteImport } from './routes/teacher-lesson'
 import { Route as SigninRouteImport } from './routes/signin'
 import { Route as QuizRouteImport } from './routes/quiz'
 import { Route as QrRouteImport } from './routes/qr'
 import { Route as PeersRouteImport } from './routes/peers'
+import { Route as LessonRouteImport } from './routes/lesson'
 import { Route as GetStartedRouteImport } from './routes/get-started'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as CoursesRouteImport } from './routes/courses'
@@ -29,6 +31,11 @@ import { Route as DashboardCoursesRouteImport } from './routes/dashboard.courses
 const TeacherQuizRoute = TeacherQuizRouteImport.update({
   id: '/teacher-quiz',
   path: '/teacher-quiz',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeacherLessonRoute = TeacherLessonRouteImport.update({
+  id: '/teacher-lesson',
+  path: '/teacher-lesson',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SigninRoute = SigninRouteImport.update({
@@ -49,6 +56,11 @@ const QrRoute = QrRouteImport.update({
 const PeersRoute = PeersRouteImport.update({
   id: '/peers',
   path: '/peers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LessonRoute = LessonRouteImport.update({
+  id: '/lesson',
+  path: '/lesson',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GetStartedRoute = GetStartedRouteImport.update({
@@ -113,10 +125,12 @@ export interface FileRoutesByFullPath {
   '/courses': typeof CoursesRoute
   '/dashboard': typeof DashboardRouteWithChildren
   '/get-started': typeof GetStartedRoute
+  '/lesson': typeof LessonRoute
   '/peers': typeof PeersRoute
   '/qr': typeof QrRoute
   '/quiz': typeof QuizRoute
   '/signin': typeof SigninRoute
+  '/teacher-lesson': typeof TeacherLessonRoute
   '/teacher-quiz': typeof TeacherQuizRoute
   '/dashboard/courses': typeof DashboardCoursesRoute
   '/dashboard/notifications': typeof DashboardNotificationsRoute
@@ -130,10 +144,12 @@ export interface FileRoutesByTo {
   '/admin-quiz': typeof AdminQuizRoute
   '/courses': typeof CoursesRoute
   '/get-started': typeof GetStartedRoute
+  '/lesson': typeof LessonRoute
   '/peers': typeof PeersRoute
   '/qr': typeof QrRoute
   '/quiz': typeof QuizRoute
   '/signin': typeof SigninRoute
+  '/teacher-lesson': typeof TeacherLessonRoute
   '/teacher-quiz': typeof TeacherQuizRoute
   '/dashboard/courses': typeof DashboardCoursesRoute
   '/dashboard/notifications': typeof DashboardNotificationsRoute
@@ -149,10 +165,12 @@ export interface FileRoutesById {
   '/courses': typeof CoursesRoute
   '/dashboard': typeof DashboardRouteWithChildren
   '/get-started': typeof GetStartedRoute
+  '/lesson': typeof LessonRoute
   '/peers': typeof PeersRoute
   '/qr': typeof QrRoute
   '/quiz': typeof QuizRoute
   '/signin': typeof SigninRoute
+  '/teacher-lesson': typeof TeacherLessonRoute
   '/teacher-quiz': typeof TeacherQuizRoute
   '/dashboard/courses': typeof DashboardCoursesRoute
   '/dashboard/notifications': typeof DashboardNotificationsRoute
@@ -169,10 +187,12 @@ export interface FileRouteTypes {
     | '/courses'
     | '/dashboard'
     | '/get-started'
+    | '/lesson'
     | '/peers'
     | '/qr'
     | '/quiz'
     | '/signin'
+    | '/teacher-lesson'
     | '/teacher-quiz'
     | '/dashboard/courses'
     | '/dashboard/notifications'
@@ -186,10 +206,12 @@ export interface FileRouteTypes {
     | '/admin-quiz'
     | '/courses'
     | '/get-started'
+    | '/lesson'
     | '/peers'
     | '/qr'
     | '/quiz'
     | '/signin'
+    | '/teacher-lesson'
     | '/teacher-quiz'
     | '/dashboard/courses'
     | '/dashboard/notifications'
@@ -204,10 +226,12 @@ export interface FileRouteTypes {
     | '/courses'
     | '/dashboard'
     | '/get-started'
+    | '/lesson'
     | '/peers'
     | '/qr'
     | '/quiz'
     | '/signin'
+    | '/teacher-lesson'
     | '/teacher-quiz'
     | '/dashboard/courses'
     | '/dashboard/notifications'
@@ -223,10 +247,12 @@ export interface RootRouteChildren {
   CoursesRoute: typeof CoursesRoute
   DashboardRoute: typeof DashboardRouteWithChildren
   GetStartedRoute: typeof GetStartedRoute
+  LessonRoute: typeof LessonRoute
   PeersRoute: typeof PeersRoute
   QrRoute: typeof QrRoute
   QuizRoute: typeof QuizRoute
   SigninRoute: typeof SigninRoute
+  TeacherLessonRoute: typeof TeacherLessonRoute
   TeacherQuizRoute: typeof TeacherQuizRoute
 }
 
@@ -237,6 +263,13 @@ declare module '@tanstack/react-router' {
       path: '/teacher-quiz'
       fullPath: '/teacher-quiz'
       preLoaderRoute: typeof TeacherQuizRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/teacher-lesson': {
+      id: '/teacher-lesson'
+      path: '/teacher-lesson'
+      fullPath: '/teacher-lesson'
+      preLoaderRoute: typeof TeacherLessonRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/signin': {
@@ -265,6 +298,13 @@ declare module '@tanstack/react-router' {
       path: '/peers'
       fullPath: '/peers'
       preLoaderRoute: typeof PeersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lesson': {
+      id: '/lesson'
+      path: '/lesson'
+      fullPath: '/lesson'
+      preLoaderRoute: typeof LessonRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/get-started': {
@@ -375,10 +415,12 @@ const rootRouteChildren: RootRouteChildren = {
   CoursesRoute: CoursesRoute,
   DashboardRoute: DashboardRouteWithChildren,
   GetStartedRoute: GetStartedRoute,
+  LessonRoute: LessonRoute,
   PeersRoute: PeersRoute,
   QrRoute: QrRoute,
   QuizRoute: QuizRoute,
   SigninRoute: SigninRoute,
+  TeacherLessonRoute: TeacherLessonRoute,
   TeacherQuizRoute: TeacherQuizRoute,
 }
 export const routeTree = rootRouteImport
