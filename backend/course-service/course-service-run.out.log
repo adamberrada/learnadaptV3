@@ -1,0 +1,420 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------< com.anouar.elearning:course-service >-----------------
+[INFO] Building course-service 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:4.0.6:run (default-cli) > test-compile @ course-service >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ course-service ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ course-service ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 56 source files with javac [debug parameters release 21] to target\classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ course-service ---
+[INFO] skip non existing resourceDirectory C:\E-learning\backend\course-service\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ course-service ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 1 source file with javac [debug parameters release 21] to target\test-classes
+[INFO] 
+[INFO] <<< spring-boot:4.0.6:run (default-cli) < test-compile @ course-service <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:4.0.6:run (default-cli) @ course-service ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.6)
+
+2026-05-29T12:52:28.538+01:00  INFO 24644 --- [course-service] [  restartedMain] c.a.e.course.CourseServiceApplication    : Starting CourseServiceApplication using Java 21.0.10 with PID 24644 (C:\E-learning\backend\course-service\target\classes started by Administrateur in C:\E-learning\backend\course-service)
+2026-05-29T12:52:28.546+01:00  INFO 24644 --- [course-service] [  restartedMain] c.a.e.course.CourseServiceApplication    : No active profile set, falling back to 1 default profile: "default"
+2026-05-29T12:52:28.640+01:00  INFO 24644 --- [course-service] [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-05-29T12:52:28.640+01:00  INFO 24644 --- [course-service] [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-05-29T12:52:30.011+01:00  INFO 24644 --- [course-service] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-29T12:52:30.165+01:00  INFO 24644 --- [course-service] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 135 ms. Found 9 JPA repository interfaces.
+2026-05-29T12:52:31.506+01:00  INFO 24644 --- [course-service] [  restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8082 (http)
+2026-05-29T12:52:31.542+01:00  INFO 24644 --- [course-service] [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-05-29T12:52:31.543+01:00  INFO 24644 --- [course-service] [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-05-29T12:52:31.644+01:00  INFO 24644 --- [course-service] [  restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 3001 ms
+2026-05-29T12:52:32.088+01:00  INFO 24644 --- [course-service] [  restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-05-29T12:52:32.200+01:00  INFO 24644 --- [course-service] [  restartedMain] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.12.Final
+2026-05-29T12:52:33.582+01:00  INFO 24644 --- [course-service] [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-29T12:52:33.656+01:00  INFO 24644 --- [course-service] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-05-29T12:52:34.116+01:00  INFO 24644 --- [course-service] [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:course_db user=SA
+2026-05-29T12:52:34.119+01:00  INFO 24644 --- [course-service] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-05-29T12:52:34.244+01:00  INFO 24644 --- [course-service] [  restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:mem:course_db]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: COURSE_DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-05-29T12:52:37.043+01:00  INFO 24644 --- [course-service] [  restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: create table categories (id varchar(255) not null, created_at timestamp(6), description varchar(1000), name varchar(255) not null, updated_at timestamp(6), primary key (id))
+Hibernate: create table chapters (id varchar(255) not null, created_at timestamp(6), description varchar(1000), order_index integer not null, title varchar(255) not null, updated_at timestamp(6), course_id varchar(255) not null, primary key (id))
+Hibernate: create table course_enrollments (id varchar(255) not null, active boolean not null, enrolled_at timestamp(6), learner_id varchar(255) not null, unenrolled_at timestamp(6), course_id varchar(255) not null, primary key (id))
+Hibernate: create table course_favorites (id varchar(255) not null, created_at timestamp(6), learner_id varchar(255) not null, course_id varchar(255) not null, primary key (id))
+Hibernate: create table course_reviews (id varchar(255) not null, comment varchar(2000), created_at timestamp(6), learner_id varchar(255) not null, rating integer not null, updated_at timestamp(6), course_id varchar(255) not null, primary key (id))
+Hibernate: create table course_tags (course_id varchar(255) not null, tag varchar(255))
+Hibernate: create table courses (id varchar(255) not null, created_at timestamp(6), description varchar(2000) not null, duration_in_minutes integer, instructor_id varchar(255) not null, level enum ('ADVANCED','BEGINNER','INTERMEDIATE') not null, price numeric(10,2) not null, status enum ('ARCHIVED','DRAFT','PUBLISHED','REJECTED','SUBMITTED') not null, thumbnail_url varchar(255), title varchar(255) not null, updated_at timestamp(6), category_id varchar(255) not null, sub_category_id varchar(255), primary key (id))
+Hibernate: create table lesson_progress (id varchar(255) not null, completed boolean not null, completed_at timestamp(6), learner_id varchar(255) not null, updated_at timestamp(6), lesson_id varchar(255) not null, primary key (id))
+Hibernate: create table lessons (id varchar(255) not null, created_at timestamp(6), external_url varchar(255), order_index integer not null, text_content varchar(10000), title varchar(255) not null, type enum ('EXTERNAL_LINK','TEXT','VIDEO') not null, updated_at timestamp(6), video_url varchar(255), chapter_id varchar(255) not null, primary key (id))
+Hibernate: create table sub_categories (id varchar(255) not null, created_at timestamp(6), description varchar(1000), name varchar(255) not null, updated_at timestamp(6), category_id varchar(255) not null, primary key (id))
+Hibernate: alter table if exists categories drop constraint if exists UKt8o6pivur7nn124jehx7cygw5
+Hibernate: alter table if exists categories add constraint UKt8o6pivur7nn124jehx7cygw5 unique (name)
+Hibernate: alter table if exists course_enrollments drop constraint if exists UKsij5o1ocnmhj9waoefip2iptg
+Hibernate: alter table if exists course_enrollments add constraint UKsij5o1ocnmhj9waoefip2iptg unique (learner_id, course_id)
+Hibernate: alter table if exists course_favorites drop constraint if exists UKooksn46jjghngnrqi3gnhsxlo
+Hibernate: alter table if exists course_favorites add constraint UKooksn46jjghngnrqi3gnhsxlo unique (learner_id, course_id)
+Hibernate: alter table if exists course_reviews drop constraint if exists UKh2966vnga53gimg7hggehbo2m
+Hibernate: alter table if exists course_reviews add constraint UKh2966vnga53gimg7hggehbo2m unique (learner_id, course_id)
+Hibernate: alter table if exists lesson_progress drop constraint if exists UKmnr7l45s6agjwjev8frojsfks
+Hibernate: alter table if exists lesson_progress add constraint UKmnr7l45s6agjwjev8frojsfks unique (learner_id, lesson_id)
+Hibernate: alter table if exists chapters add constraint FK6h1m0nrtdwj37570c0sp2tdcs foreign key (course_id) references courses
+Hibernate: alter table if exists course_enrollments add constraint FKf78cq7ecdpk1clt1w5ofnb34t foreign key (course_id) references courses
+Hibernate: alter table if exists course_favorites add constraint FKqijlobhba0gyexj7y0bjojbr9 foreign key (course_id) references courses
+Hibernate: alter table if exists course_reviews add constraint FK799g8dfcye3g51ru63bfdhyb1 foreign key (course_id) references courses
+Hibernate: alter table if exists course_tags add constraint FKjqwlxw962j7q9wdogwnrctc2p foreign key (course_id) references courses
+Hibernate: alter table if exists courses add constraint FK72l5dj585nq7i6xxv1vj51lyn foreign key (category_id) references categories
+Hibernate: alter table if exists courses add constraint FKmp2m2f2b06eb7qmeeurysvho3 foreign key (sub_category_id) references sub_categories
+Hibernate: alter table if exists lesson_progress add constraint FKqwr70bkn0j6gok1y4op9jns8y foreign key (lesson_id) references lessons
+Hibernate: alter table if exists lessons add constraint FKmb78vk1f2oljr16oj1hpo45ma foreign key (chapter_id) references chapters
+Hibernate: alter table if exists sub_categories add constraint FKjwy7imy3rf6r99x48ydq45otw foreign key (category_id) references categories
+2026-05-29T12:52:37.479+01:00  INFO 24644 --- [course-service] [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-29T12:52:37.688+01:00  INFO 24644 --- [course-service] [  restartedMain] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-05-29T12:52:42.176+01:00  INFO 24644 --- [course-service] [  restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
+2026-05-29T12:52:43.490+01:00  INFO 24644 --- [course-service] [  restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8082 (http) with context path '/'
+2026-05-29T12:52:43.507+01:00  INFO 24644 --- [course-service] [  restartedMain] c.a.e.course.CourseServiceApplication    : Started CourseServiceApplication in 15.807 seconds (process running for 16.775)
+Hibernate: select c1_0.id,c1_0.category_id,c1_0.created_at,c1_0.description,c1_0.duration_in_minutes,c1_0.instructor_id,c1_0.level,c1_0.price,c1_0.status,c1_0.sub_category_id,c1_0.thumbnail_url,c1_0.title,c1_0.updated_at from courses c1_0 where c1_0.status=?
+Hibernate: select c1_0.id,c1_0.created_at,c1_0.description,c1_0.name,c1_0.updated_at from categories c1_0 where upper(c1_0.name)=upper(?)
+Hibernate: insert into categories (created_at,description,name,updated_at,id) values (?,?,?,?,?)
+Hibernate: select c1_0.id,c1_0.created_at,c1_0.description,c1_0.name,c1_0.updated_at from categories c1_0 where upper(c1_0.name)=upper(?)
+Hibernate: insert into categories (created_at,description,name,updated_at,id) values (?,?,?,?,?)
+Hibernate: select c1_0.id,c1_0.created_at,c1_0.description,c1_0.name,c1_0.updated_at from categories c1_0 where upper(c1_0.name)=upper(?)
+Hibernate: insert into categories (created_at,description,name,updated_at,id) values (?,?,?,?,?)
+Hibernate: select c1_0.id,c1_0.created_at,c1_0.description,c1_0.name,c1_0.updated_at from categories c1_0 where upper(c1_0.name)=upper(?)
+Hibernate: insert into categories (created_at,description,name,updated_at,id) values (?,?,?,?,?)
+Hibernate: select c1_0.id,c1_0.created_at,c1_0.description,c1_0.name,c1_0.updated_at from categories c1_0 where upper(c1_0.name)=upper(?)
+Hibernate: insert into categories (created_at,description,name,updated_at,id) values (?,?,?,?,?)
+Hibernate: insert into courses (category_id,created_at,description,duration_in_minutes,instructor_id,level,price,status,sub_category_id,thumbnail_url,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: insert into course_tags (course_id,tag) values (?,?)
+Hibernate: insert into course_tags (course_id,tag) values (?,?)
+Hibernate: insert into courses (category_id,created_at,description,duration_in_minutes,instructor_id,level,price,status,sub_category_id,thumbnail_url,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: insert into course_tags (course_id,tag) values (?,?)
+Hibernate: insert into course_tags (course_id,tag) values (?,?)
+Hibernate: insert into courses (category_id,created_at,description,duration_in_minutes,instructor_id,level,price,status,sub_category_id,thumbnail_url,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: insert into course_tags (course_id,tag) values (?,?)
+Hibernate: insert into course_tags (course_id,tag) values (?,?)
+Hibernate: insert into courses (category_id,created_at,description,duration_in_minutes,instructor_id,level,price,status,sub_category_id,thumbnail_url,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: insert into course_tags (course_id,tag) values (?,?)
+Hibernate: insert into course_tags (course_id,tag) values (?,?)
+Hibernate: insert into courses (category_id,created_at,description,duration_in_minutes,instructor_id,level,price,status,sub_category_id,thumbnail_url,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: insert into course_tags (course_id,tag) values (?,?)
+Hibernate: insert into course_tags (course_id,tag) values (?,?)
+Hibernate: insert into courses (category_id,created_at,description,duration_in_minutes,instructor_id,level,price,status,sub_category_id,thumbnail_url,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: insert into course_tags (course_id,tag) values (?,?)
+Hibernate: insert into course_tags (course_id,tag) values (?,?)
+2026-05-29T12:53:09.241+01:00  INFO 24644 --- [course-service] [nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-05-29T12:53:09.242+01:00  INFO 24644 --- [course-service] [nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-05-29T12:53:09.244+01:00  INFO 24644 --- [course-service] [nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+Hibernate: select distinct c1_0.id,c1_0.category_id,c1_0.created_at,c1_0.description,c1_0.duration_in_minutes,c1_0.instructor_id,c1_0.level,c1_0.price,c1_0.status,c1_0.sub_category_id,c1_0.thumbnail_url,c1_0.title,c1_0.updated_at from courses c1_0 left join course_tags t1_0 on c1_0.id=t1_0.course_id where (? is null or c1_0.status=?) and (? is null or lower(c1_0.title) like lower(('%'||?||'%')) escape '' or lower(c1_0.description) like lower(('%'||?||'%')) escape '') and (? is null or lower(t1_0.tag)=lower(?))
+Hibernate: select distinct c1_0.id,c1_0.category_id,c1_0.created_at,c1_0.description,c1_0.duration_in_minutes,c1_0.instructor_id,c1_0.level,c1_0.price,c1_0.status,c1_0.sub_category_id,c1_0.thumbnail_url,c1_0.title,c1_0.updated_at from courses c1_0 left join course_tags t1_0 on c1_0.id=t1_0.course_id where (? is null or c1_0.status=?) and (? is null or lower(c1_0.title) like lower(('%'||?||'%')) escape '' or lower(c1_0.description) like lower(('%'||?||'%')) escape '') and (? is null or lower(t1_0.tag)=lower(?))
+Hibernate: select c1_0.id,c1_0.created_at,c1_0.description,c1_0.name,c1_0.updated_at from categories c1_0 where c1_0.id=?
+Hibernate: select c1_0.id,c1_0.created_at,c1_0.description,c1_0.name,c1_0.updated_at from categories c1_0 where c1_0.id=?
+Hibernate: select t1_0.course_id,t1_0.tag from course_tags t1_0 where t1_0.course_id=?
+Hibernate: select t1_0.course_id,t1_0.tag from course_tags t1_0 where t1_0.course_id=?
+Hibernate: select c1_0.course_id,c1_0.id,c1_0.created_at,c1_0.description,c1_0.order_index,c1_0.title,c1_0.updated_at from chapters c1_0 where c1_0.course_id=? order by c1_0.order_index
+Hibernate: select c1_0.course_id,c1_0.id,c1_0.created_at,c1_0.description,c1_0.order_index,c1_0.title,c1_0.updated_at from chapters c1_0 where c1_0.course_id=? order by c1_0.order_index
+Hibernate: select c1_0.id,c1_0.created_at,c1_0.description,c1_0.name,c1_0.updated_at from categories c1_0 where c1_0.id=?
+Hibernate: select c1_0.id,c1_0.created_at,c1_0.description,c1_0.name,c1_0.updated_at from categories c1_0 where c1_0.id=?
+Hibernate: select t1_0.course_id,t1_0.tag from course_tags t1_0 where t1_0.course_id=?
+Hibernate: select t1_0.course_id,t1_0.tag from course_tags t1_0 where t1_0.course_id=?
+Hibernate: select c1_0.course_id,c1_0.id,c1_0.created_at,c1_0.description,c1_0.order_index,c1_0.title,c1_0.updated_at from chapters c1_0 where c1_0.course_id=? order by c1_0.order_index
+Hibernate: select c1_0.course_id,c1_0.id,c1_0.created_at,c1_0.description,c1_0.order_index,c1_0.title,c1_0.updated_at from chapters c1_0 where c1_0.course_id=? order by c1_0.order_index
+Hibernate: select c1_0.id,c1_0.created_at,c1_0.description,c1_0.name,c1_0.updated_at from categories c1_0 where c1_0.id=?
+Hibernate: select c1_0.id,c1_0.created_at,c1_0.description,c1_0.name,c1_0.updated_at from categories c1_0 where c1_0.id=?
+Hibernate: select t1_0.course_id,t1_0.tag from course_tags t1_0 where t1_0.course_id=?
+Hibernate: select t1_0.course_id,t1_0.tag from course_tags t1_0 where t1_0.course_id=?
+Hibernate: select c1_0.course_id,c1_0.id,c1_0.created_at,c1_0.description,c1_0.order_index,c1_0.title,c1_0.updated_at from chapters c1_0 where c1_0.course_id=? order by c1_0.order_index
+Hibernate: select c1_0.course_id,c1_0.id,c1_0.created_at,c1_0.description,c1_0.order_index,c1_0.title,c1_0.updated_at from chapters c1_0 where c1_0.course_id=? order by c1_0.order_index
+Hibernate: select c1_0.id,c1_0.created_at,c1_0.description,c1_0.name,c1_0.updated_at from categories c1_0 where c1_0.id=?
+Hibernate: select c1_0.id,c1_0.created_at,c1_0.description,c1_0.name,c1_0.updated_at from categories c1_0 where c1_0.id=?
+Hibernate: select t1_0.course_id,t1_0.tag from course_tags t1_0 where t1_0.course_id=?
+Hibernate: select t1_0.course_id,t1_0.tag from course_tags t1_0 where t1_0.course_id=?
+Hibernate: select c1_0.course_id,c1_0.id,c1_0.created_at,c1_0.description,c1_0.order_index,c1_0.title,c1_0.updated_at from chapters c1_0 where c1_0.course_id=? order by c1_0.order_index
+Hibernate: select c1_0.course_id,c1_0.id,c1_0.created_at,c1_0.description,c1_0.order_index,c1_0.title,c1_0.updated_at from chapters c1_0 where c1_0.course_id=? order by c1_0.order_index
+Hibernate: select c1_0.id,c1_0.created_at,c1_0.description,c1_0.name,c1_0.updated_at from categories c1_0 where c1_0.id=?
+Hibernate: select c1_0.id,c1_0.created_at,c1_0.description,c1_0.name,c1_0.updated_at from categories c1_0 where c1_0.id=?
+Hibernate: select t1_0.course_id,t1_0.tag from course_tags t1_0 where t1_0.course_id=?
+Hibernate: select t1_0.course_id,t1_0.tag from course_tags t1_0 where t1_0.course_id=?
+Hibernate: select c1_0.course_id,c1_0.id,c1_0.created_at,c1_0.description,c1_0.order_index,c1_0.title,c1_0.updated_at from chapters c1_0 where c1_0.course_id=? order by c1_0.order_index
+Hibernate: select c1_0.course_id,c1_0.id,c1_0.created_at,c1_0.description,c1_0.order_index,c1_0.title,c1_0.updated_at from chapters c1_0 where c1_0.course_id=? order by c1_0.order_index
+Hibernate: select t1_0.course_id,t1_0.tag from course_tags t1_0 where t1_0.course_id=?
+Hibernate: select t1_0.course_id,t1_0.tag from course_tags t1_0 where t1_0.course_id=?
+Hibernate: select c1_0.course_id,c1_0.id,c1_0.created_at,c1_0.description,c1_0.order_index,c1_0.title,c1_0.updated_at from chapters c1_0 where c1_0.course_id=? order by c1_0.order_index
+Hibernate: select c1_0.course_id,c1_0.id,c1_0.created_at,c1_0.description,c1_0.order_index,c1_0.title,c1_0.updated_at from chapters c1_0 where c1_0.course_id=? order by c1_0.order_index
+Hibernate: select distinct c1_0.id,c1_0.category_id,c1_0.created_at,c1_0.description,c1_0.duration_in_minutes,c1_0.instructor_id,c1_0.level,c1_0.price,c1_0.status,c1_0.sub_category_id,c1_0.thumbnail_url,c1_0.title,c1_0.updated_at from courses c1_0 left join course_tags t1_0 on c1_0.id=t1_0.course_id where (? is null or c1_0.status=?) and (? is null or lower(c1_0.title) like lower(('%'||?||'%')) escape '' or lower(c1_0.description) like lower(('%'||?||'%')) escape '') and (? is null or lower(t1_0.tag)=lower(?))
+Hibernate: select c1_0.id,c1_0.created_at,c1_0.description,c1_0.name,c1_0.updated_at from categories c1_0 where c1_0.id=?
+Hibernate: select t1_0.course_id,t1_0.tag from course_tags t1_0 where t1_0.course_id=?
+Hibernate: select c1_0.course_id,c1_0.id,c1_0.created_at,c1_0.description,c1_0.order_index,c1_0.title,c1_0.updated_at from chapters c1_0 where c1_0.course_id=? order by c1_0.order_index
+Hibernate: select c1_0.id,c1_0.created_at,c1_0.description,c1_0.name,c1_0.updated_at from categories c1_0 where c1_0.id=?
+Hibernate: select t1_0.course_id,t1_0.tag from course_tags t1_0 where t1_0.course_id=?
+Hibernate: select c1_0.course_id,c1_0.id,c1_0.created_at,c1_0.description,c1_0.order_index,c1_0.title,c1_0.updated_at from chapters c1_0 where c1_0.course_id=? order by c1_0.order_index
+Hibernate: select c1_0.id,c1_0.created_at,c1_0.description,c1_0.name,c1_0.updated_at from categories c1_0 where c1_0.id=?
+Hibernate: select t1_0.course_id,t1_0.tag from course_tags t1_0 where t1_0.course_id=?
+Hibernate: select c1_0.course_id,c1_0.id,c1_0.created_at,c1_0.description,c1_0.order_index,c1_0.title,c1_0.updated_at from chapters c1_0 where c1_0.course_id=? order by c1_0.order_index
+Hibernate: select c1_0.id,c1_0.created_at,c1_0.description,c1_0.name,c1_0.updated_at from categories c1_0 where c1_0.id=?
+Hibernate: select t1_0.course_id,t1_0.tag from course_tags t1_0 where t1_0.course_id=?
+Hibernate: select c1_0.course_id,c1_0.id,c1_0.created_at,c1_0.description,c1_0.order_index,c1_0.title,c1_0.updated_at from chapters c1_0 where c1_0.course_id=? order by c1_0.order_index
+Hibernate: select c1_0.id,c1_0.created_at,c1_0.description,c1_0.name,c1_0.updated_at from categories c1_0 where c1_0.id=?
+Hibernate: select t1_0.course_id,t1_0.tag from course_tags t1_0 where t1_0.course_id=?
+Hibernate: select c1_0.course_id,c1_0.id,c1_0.created_at,c1_0.description,c1_0.order_index,c1_0.title,c1_0.updated_at from chapters c1_0 where c1_0.course_id=? order by c1_0.order_index
+Hibernate: select t1_0.course_id,t1_0.tag from course_tags t1_0 where t1_0.course_id=?
+Hibernate: select c1_0.course_id,c1_0.id,c1_0.created_at,c1_0.description,c1_0.order_index,c1_0.title,c1_0.updated_at from chapters c1_0 where c1_0.course_id=? order by c1_0.order_index
+2026-05-29T13:07:21.448+01:00  INFO 24644 --- [course-service] [   File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-05-29T13:07:21.462+01:00  INFO 24644 --- [course-service] [       Thread-1] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-05-29T13:07:21.489+01:00  INFO 24644 --- [course-service] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-05-29T13:07:21.503+01:00  INFO 24644 --- [course-service] [       Thread-1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-05-29T13:07:21.520+01:00  WARN 24644 --- [course-service] [       Thread-1] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: La base de données est déjà fermée (pour désactiver la fermeture automatique à l'arrêt de la VM, ajoutez "; DB_CLOSE_ON_EXIT = FALSE" à l'URL db)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-240]
+2026-05-29T13:07:21.521+01:00  INFO 24644 --- [course-service] [       Thread-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-05-29T13:07:21.526+01:00  INFO 24644 --- [course-service] [       Thread-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.6)
+
+2026-05-29T13:07:21.755+01:00  INFO 24644 --- [course-service] [  restartedMain] c.a.e.course.CourseServiceApplication    : Starting CourseServiceApplication using Java 21.0.10 with PID 24644 (C:\E-learning\backend\course-service\target\classes started by Administrateur in C:\E-learning\backend\course-service)
+2026-05-29T13:07:21.756+01:00  INFO 24644 --- [course-service] [  restartedMain] c.a.e.course.CourseServiceApplication    : No active profile set, falling back to 1 default profile: "default"
+2026-05-29T13:07:23.302+01:00  INFO 24644 --- [course-service] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-29T13:07:23.421+01:00  INFO 24644 --- [course-service] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 111 ms. Found 9 JPA repository interfaces.
+2026-05-29T13:07:24.197+01:00  INFO 24644 --- [course-service] [  restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8082 (http)
+2026-05-29T13:07:24.201+01:00  INFO 24644 --- [course-service] [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-05-29T13:07:24.202+01:00  INFO 24644 --- [course-service] [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-05-29T13:07:24.286+01:00  INFO 24644 --- [course-service] [  restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 2522 ms
+2026-05-29T13:07:24.496+01:00  INFO 24644 --- [course-service] [  restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-05-29T13:07:24.630+01:00  INFO 24644 --- [course-service] [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-29T13:07:24.636+01:00  INFO 24644 --- [course-service] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-05-29T13:07:24.643+01:00  INFO 24644 --- [course-service] [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:course_db user=SA
+2026-05-29T13:07:24.644+01:00  INFO 24644 --- [course-service] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-05-29T13:07:24.647+01:00  INFO 24644 --- [course-service] [  restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:mem:course_db]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: COURSE_DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-05-29T13:07:25.307+01:00  INFO 24644 --- [course-service] [  restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: create table categories (id varchar(255) not null, created_at timestamp(6), description varchar(1000), name varchar(255) not null, updated_at timestamp(6), primary key (id))
+Hibernate: create table chapters (id varchar(255) not null, created_at timestamp(6), description varchar(1000), order_index integer not null, title varchar(255) not null, updated_at timestamp(6), course_id varchar(255) not null, primary key (id))
+Hibernate: create table course_enrollments (id varchar(255) not null, active boolean not null, enrolled_at timestamp(6), learner_id varchar(255) not null, unenrolled_at timestamp(6), course_id varchar(255) not null, primary key (id))
+Hibernate: create table course_favorites (id varchar(255) not null, created_at timestamp(6), learner_id varchar(255) not null, course_id varchar(255) not null, primary key (id))
+Hibernate: create table course_reviews (id varchar(255) not null, comment varchar(2000), created_at timestamp(6), learner_id varchar(255) not null, rating integer not null, updated_at timestamp(6), course_id varchar(255) not null, primary key (id))
+Hibernate: create table course_tags (course_id varchar(255) not null, tag varchar(255))
+Hibernate: create table courses (id varchar(255) not null, created_at timestamp(6), description varchar(2000) not null, duration_in_minutes integer, instructor_id varchar(255) not null, level enum ('ADVANCED','BEGINNER','INTERMEDIATE') not null, price numeric(10,2) not null, status enum ('ARCHIVED','DRAFT','PUBLISHED','REJECTED','SUBMITTED') not null, thumbnail_url varchar(255), title varchar(255) not null, updated_at timestamp(6), category_id varchar(255) not null, sub_category_id varchar(255), primary key (id))
+Hibernate: create table lesson_progress (id varchar(255) not null, completed boolean not null, completed_at timestamp(6), learner_id varchar(255) not null, updated_at timestamp(6), lesson_id varchar(255) not null, primary key (id))
+Hibernate: create table lessons (id varchar(255) not null, created_at timestamp(6), external_url varchar(255), order_index integer not null, text_content varchar(10000), title varchar(255) not null, type enum ('EXTERNAL_LINK','TEXT','VIDEO') not null, updated_at timestamp(6), video_url varchar(255), chapter_id varchar(255) not null, primary key (id))
+Hibernate: create table sub_categories (id varchar(255) not null, created_at timestamp(6), description varchar(1000), name varchar(255) not null, updated_at timestamp(6), category_id varchar(255) not null, primary key (id))
+Hibernate: alter table if exists categories drop constraint if exists UKt8o6pivur7nn124jehx7cygw5
+Hibernate: alter table if exists categories add constraint UKt8o6pivur7nn124jehx7cygw5 unique (name)
+Hibernate: alter table if exists course_enrollments drop constraint if exists UKsij5o1ocnmhj9waoefip2iptg
+Hibernate: alter table if exists course_enrollments add constraint UKsij5o1ocnmhj9waoefip2iptg unique (learner_id, course_id)
+Hibernate: alter table if exists course_favorites drop constraint if exists UKooksn46jjghngnrqi3gnhsxlo
+Hibernate: alter table if exists course_favorites add constraint UKooksn46jjghngnrqi3gnhsxlo unique (learner_id, course_id)
+Hibernate: alter table if exists course_reviews drop constraint if exists UKh2966vnga53gimg7hggehbo2m
+Hibernate: alter table if exists course_reviews add constraint UKh2966vnga53gimg7hggehbo2m unique (learner_id, course_id)
+Hibernate: alter table if exists lesson_progress drop constraint if exists UKmnr7l45s6agjwjev8frojsfks
+Hibernate: alter table if exists lesson_progress add constraint UKmnr7l45s6agjwjev8frojsfks unique (learner_id, lesson_id)
+Hibernate: alter table if exists chapters add constraint FK6h1m0nrtdwj37570c0sp2tdcs foreign key (course_id) references courses
+Hibernate: alter table if exists course_enrollments add constraint FKf78cq7ecdpk1clt1w5ofnb34t foreign key (course_id) references courses
+Hibernate: alter table if exists course_favorites add constraint FKqijlobhba0gyexj7y0bjojbr9 foreign key (course_id) references courses
+Hibernate: alter table if exists course_reviews add constraint FK799g8dfcye3g51ru63bfdhyb1 foreign key (course_id) references courses
+Hibernate: alter table if exists course_tags add constraint FKjqwlxw962j7q9wdogwnrctc2p foreign key (course_id) references courses
+Hibernate: alter table if exists courses add constraint FK72l5dj585nq7i6xxv1vj51lyn foreign key (category_id) references categories
+Hibernate: alter table if exists courses add constraint FKmp2m2f2b06eb7qmeeurysvho3 foreign key (sub_category_id) references sub_categories
+Hibernate: alter table if exists lesson_progress add constraint FKqwr70bkn0j6gok1y4op9jns8y foreign key (lesson_id) references lessons
+Hibernate: alter table if exists lessons add constraint FKmb78vk1f2oljr16oj1hpo45ma foreign key (chapter_id) references chapters
+Hibernate: alter table if exists sub_categories add constraint FKjwy7imy3rf6r99x48ydq45otw foreign key (category_id) references categories
+2026-05-29T13:07:25.511+01:00  INFO 24644 --- [course-service] [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-29T13:07:27.488+01:00  INFO 24644 --- [course-service] [  restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
+2026-05-29T13:07:28.256+01:00  INFO 24644 --- [course-service] [  restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8082 (http) with context path '/'
+2026-05-29T13:07:28.264+01:00  INFO 24644 --- [course-service] [  restartedMain] c.a.e.course.CourseServiceApplication    : Started CourseServiceApplication in 6.616 seconds (process running for 901.531)
+Hibernate: select c1_0.id,c1_0.category_id,c1_0.created_at,c1_0.description,c1_0.duration_in_minutes,c1_0.instructor_id,c1_0.level,c1_0.price,c1_0.status,c1_0.sub_category_id,c1_0.thumbnail_url,c1_0.title,c1_0.updated_at from courses c1_0 where c1_0.status=?
+Hibernate: select c1_0.id,c1_0.created_at,c1_0.description,c1_0.name,c1_0.updated_at from categories c1_0 where upper(c1_0.name)=upper(?)
+Hibernate: insert into categories (created_at,description,name,updated_at,id) values (?,?,?,?,?)
+Hibernate: select c1_0.id,c1_0.created_at,c1_0.description,c1_0.name,c1_0.updated_at from categories c1_0 where upper(c1_0.name)=upper(?)
+Hibernate: insert into categories (created_at,description,name,updated_at,id) values (?,?,?,?,?)
+Hibernate: select c1_0.id,c1_0.created_at,c1_0.description,c1_0.name,c1_0.updated_at from categories c1_0 where upper(c1_0.name)=upper(?)
+Hibernate: insert into categories (created_at,description,name,updated_at,id) values (?,?,?,?,?)
+Hibernate: select c1_0.id,c1_0.created_at,c1_0.description,c1_0.name,c1_0.updated_at from categories c1_0 where upper(c1_0.name)=upper(?)
+Hibernate: insert into categories (created_at,description,name,updated_at,id) values (?,?,?,?,?)
+Hibernate: select c1_0.id,c1_0.created_at,c1_0.description,c1_0.name,c1_0.updated_at from categories c1_0 where upper(c1_0.name)=upper(?)
+Hibernate: insert into categories (created_at,description,name,updated_at,id) values (?,?,?,?,?)
+Hibernate: insert into courses (category_id,created_at,description,duration_in_minutes,instructor_id,level,price,status,sub_category_id,thumbnail_url,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: insert into course_tags (course_id,tag) values (?,?)
+Hibernate: insert into course_tags (course_id,tag) values (?,?)
+Hibernate: insert into courses (category_id,created_at,description,duration_in_minutes,instructor_id,level,price,status,sub_category_id,thumbnail_url,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: insert into course_tags (course_id,tag) values (?,?)
+Hibernate: insert into course_tags (course_id,tag) values (?,?)
+Hibernate: insert into courses (category_id,created_at,description,duration_in_minutes,instructor_id,level,price,status,sub_category_id,thumbnail_url,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: insert into course_tags (course_id,tag) values (?,?)
+Hibernate: insert into course_tags (course_id,tag) values (?,?)
+Hibernate: insert into courses (category_id,created_at,description,duration_in_minutes,instructor_id,level,price,status,sub_category_id,thumbnail_url,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: insert into course_tags (course_id,tag) values (?,?)
+Hibernate: insert into course_tags (course_id,tag) values (?,?)
+Hibernate: insert into courses (category_id,created_at,description,duration_in_minutes,instructor_id,level,price,status,sub_category_id,thumbnail_url,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: insert into course_tags (course_id,tag) values (?,?)
+Hibernate: insert into course_tags (course_id,tag) values (?,?)
+Hibernate: insert into courses (category_id,created_at,description,duration_in_minutes,instructor_id,level,price,status,sub_category_id,thumbnail_url,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: insert into course_tags (course_id,tag) values (?,?)
+Hibernate: insert into course_tags (course_id,tag) values (?,?)
+2026-05-29T13:07:28.435+01:00  INFO 24644 --- [course-service] [  restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2026-05-29T13:07:52.927+01:00  INFO 24644 --- [course-service] [   File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 83 class path changes (0 additions, 0 deletions, 83 modifications)
+2026-05-29T13:07:52.932+01:00  INFO 24644 --- [course-service] [       Thread-5] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-05-29T13:07:52.942+01:00  INFO 24644 --- [course-service] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-05-29T13:07:52.947+01:00  INFO 24644 --- [course-service] [       Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-05-29T13:07:52.948+01:00  WARN 24644 --- [course-service] [       Thread-5] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: La base de données est déjà fermée (pour désactiver la fermeture automatique à l'arrêt de la VM, ajoutez "; DB_CLOSE_ON_EXIT = FALSE" à l'URL db)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-240]
+2026-05-29T13:07:52.949+01:00  INFO 24644 --- [course-service] [       Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2026-05-29T13:07:52.950+01:00  INFO 24644 --- [course-service] [       Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.6)
+
+2026-05-29T13:07:53.109+01:00  INFO 24644 --- [course-service] [  restartedMain] c.a.e.course.CourseServiceApplication    : Starting CourseServiceApplication using Java 21.0.10 with PID 24644 (C:\E-learning\backend\course-service\target\classes started by Administrateur in C:\E-learning\backend\course-service)
+2026-05-29T13:07:53.110+01:00  INFO 24644 --- [course-service] [  restartedMain] c.a.e.course.CourseServiceApplication    : No active profile set, falling back to 1 default profile: "default"
+2026-05-29T13:07:53.585+01:00  INFO 24644 --- [course-service] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-29T13:07:53.659+01:00  INFO 24644 --- [course-service] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 68 ms. Found 9 JPA repository interfaces.
+2026-05-29T13:07:53.940+01:00  INFO 24644 --- [course-service] [  restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8082 (http)
+2026-05-29T13:07:53.942+01:00  INFO 24644 --- [course-service] [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-05-29T13:07:53.943+01:00  INFO 24644 --- [course-service] [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-05-29T13:07:54.000+01:00  INFO 24644 --- [course-service] [  restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 886 ms
+2026-05-29T13:07:54.162+01:00  INFO 24644 --- [course-service] [  restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-05-29T13:07:54.257+01:00  INFO 24644 --- [course-service] [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-29T13:07:54.260+01:00  INFO 24644 --- [course-service] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2026-05-29T13:07:54.264+01:00  INFO 24644 --- [course-service] [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection conn20: url=jdbc:h2:mem:course_db user=SA
+2026-05-29T13:07:54.264+01:00  INFO 24644 --- [course-service] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2026-05-29T13:07:54.266+01:00  INFO 24644 --- [course-service] [  restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:mem:course_db]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: COURSE_DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-05-29T13:07:54.653+01:00  INFO 24644 --- [course-service] [  restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: create table categories (id varchar(255) not null, created_at timestamp(6), description varchar(1000), name varchar(255) not null, updated_at timestamp(6), primary key (id))
+Hibernate: create table chapters (id varchar(255) not null, created_at timestamp(6), description varchar(1000), order_index integer not null, title varchar(255) not null, updated_at timestamp(6), course_id varchar(255) not null, primary key (id))
+Hibernate: create table course_enrollments (id varchar(255) not null, active boolean not null, enrolled_at timestamp(6), learner_id varchar(255) not null, unenrolled_at timestamp(6), course_id varchar(255) not null, primary key (id))
+Hibernate: create table course_favorites (id varchar(255) not null, created_at timestamp(6), learner_id varchar(255) not null, course_id varchar(255) not null, primary key (id))
+Hibernate: create table course_reviews (id varchar(255) not null, comment varchar(2000), created_at timestamp(6), learner_id varchar(255) not null, rating integer not null, updated_at timestamp(6), course_id varchar(255) not null, primary key (id))
+Hibernate: create table course_tags (course_id varchar(255) not null, tag varchar(255))
+Hibernate: create table courses (id varchar(255) not null, created_at timestamp(6), description varchar(2000) not null, duration_in_minutes integer, instructor_id varchar(255) not null, level enum ('ADVANCED','BEGINNER','INTERMEDIATE') not null, price numeric(10,2) not null, status enum ('ARCHIVED','DRAFT','PUBLISHED','REJECTED','SUBMITTED') not null, thumbnail_url varchar(255), title varchar(255) not null, updated_at timestamp(6), category_id varchar(255) not null, sub_category_id varchar(255), primary key (id))
+Hibernate: create table lesson_progress (id varchar(255) not null, completed boolean not null, completed_at timestamp(6), learner_id varchar(255) not null, updated_at timestamp(6), lesson_id varchar(255) not null, primary key (id))
+Hibernate: create table lessons (id varchar(255) not null, created_at timestamp(6), external_url varchar(255), order_index integer not null, text_content varchar(10000), title varchar(255) not null, type enum ('EXTERNAL_LINK','TEXT','VIDEO') not null, updated_at timestamp(6), video_url varchar(255), chapter_id varchar(255) not null, primary key (id))
+Hibernate: create table sub_categories (id varchar(255) not null, created_at timestamp(6), description varchar(1000), name varchar(255) not null, updated_at timestamp(6), category_id varchar(255) not null, primary key (id))
+Hibernate: alter table if exists categories drop constraint if exists UKt8o6pivur7nn124jehx7cygw5
+Hibernate: alter table if exists categories add constraint UKt8o6pivur7nn124jehx7cygw5 unique (name)
+Hibernate: alter table if exists course_enrollments drop constraint if exists UKsij5o1ocnmhj9waoefip2iptg
+Hibernate: alter table if exists course_enrollments add constraint UKsij5o1ocnmhj9waoefip2iptg unique (learner_id, course_id)
+Hibernate: alter table if exists course_favorites drop constraint if exists UKooksn46jjghngnrqi3gnhsxlo
+Hibernate: alter table if exists course_favorites add constraint UKooksn46jjghngnrqi3gnhsxlo unique (learner_id, course_id)
+Hibernate: alter table if exists course_reviews drop constraint if exists UKh2966vnga53gimg7hggehbo2m
+Hibernate: alter table if exists course_reviews add constraint UKh2966vnga53gimg7hggehbo2m unique (learner_id, course_id)
+Hibernate: alter table if exists lesson_progress drop constraint if exists UKmnr7l45s6agjwjev8frojsfks
+Hibernate: alter table if exists lesson_progress add constraint UKmnr7l45s6agjwjev8frojsfks unique (learner_id, lesson_id)
+Hibernate: alter table if exists chapters add constraint FK6h1m0nrtdwj37570c0sp2tdcs foreign key (course_id) references courses
+Hibernate: alter table if exists course_enrollments add constraint FKf78cq7ecdpk1clt1w5ofnb34t foreign key (course_id) references courses
+Hibernate: alter table if exists course_favorites add constraint FKqijlobhba0gyexj7y0bjojbr9 foreign key (course_id) references courses
+Hibernate: alter table if exists course_reviews add constraint FK799g8dfcye3g51ru63bfdhyb1 foreign key (course_id) references courses
+Hibernate: alter table if exists course_tags add constraint FKjqwlxw962j7q9wdogwnrctc2p foreign key (course_id) references courses
+Hibernate: alter table if exists courses add constraint FK72l5dj585nq7i6xxv1vj51lyn foreign key (category_id) references categories
+Hibernate: alter table if exists courses add constraint FKmp2m2f2b06eb7qmeeurysvho3 foreign key (sub_category_id) references sub_categories
+Hibernate: alter table if exists lesson_progress add constraint FKqwr70bkn0j6gok1y4op9jns8y foreign key (lesson_id) references lessons
+Hibernate: alter table if exists lessons add constraint FKmb78vk1f2oljr16oj1hpo45ma foreign key (chapter_id) references chapters
+Hibernate: alter table if exists sub_categories add constraint FKjwy7imy3rf6r99x48ydq45otw foreign key (category_id) references categories
+2026-05-29T13:07:54.709+01:00  INFO 24644 --- [course-service] [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-29T13:07:55.817+01:00  INFO 24644 --- [course-service] [  restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
+2026-05-29T13:07:56.702+01:00  INFO 24644 --- [course-service] [  restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8082 (http) with context path '/'
+2026-05-29T13:07:56.707+01:00  INFO 24644 --- [course-service] [  restartedMain] c.a.e.course.CourseServiceApplication    : Started CourseServiceApplication in 3.656 seconds (process running for 929.975)
+Hibernate: select c1_0.id,c1_0.category_id,c1_0.created_at,c1_0.description,c1_0.duration_in_minutes,c1_0.instructor_id,c1_0.level,c1_0.price,c1_0.status,c1_0.sub_category_id,c1_0.thumbnail_url,c1_0.title,c1_0.updated_at from courses c1_0 where c1_0.status=?
+Hibernate: select c1_0.id,c1_0.created_at,c1_0.description,c1_0.name,c1_0.updated_at from categories c1_0 where upper(c1_0.name)=upper(?)
+Hibernate: insert into categories (created_at,description,name,updated_at,id) values (?,?,?,?,?)
+Hibernate: select c1_0.id,c1_0.created_at,c1_0.description,c1_0.name,c1_0.updated_at from categories c1_0 where upper(c1_0.name)=upper(?)
+Hibernate: insert into categories (created_at,description,name,updated_at,id) values (?,?,?,?,?)
+Hibernate: select c1_0.id,c1_0.created_at,c1_0.description,c1_0.name,c1_0.updated_at from categories c1_0 where upper(c1_0.name)=upper(?)
+Hibernate: insert into categories (created_at,description,name,updated_at,id) values (?,?,?,?,?)
+Hibernate: select c1_0.id,c1_0.created_at,c1_0.description,c1_0.name,c1_0.updated_at from categories c1_0 where upper(c1_0.name)=upper(?)
+Hibernate: insert into categories (created_at,description,name,updated_at,id) values (?,?,?,?,?)
+Hibernate: select c1_0.id,c1_0.created_at,c1_0.description,c1_0.name,c1_0.updated_at from categories c1_0 where upper(c1_0.name)=upper(?)
+Hibernate: insert into categories (created_at,description,name,updated_at,id) values (?,?,?,?,?)
+Hibernate: insert into courses (category_id,created_at,description,duration_in_minutes,instructor_id,level,price,status,sub_category_id,thumbnail_url,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: insert into course_tags (course_id,tag) values (?,?)
+Hibernate: insert into course_tags (course_id,tag) values (?,?)
+Hibernate: insert into courses (category_id,created_at,description,duration_in_minutes,instructor_id,level,price,status,sub_category_id,thumbnail_url,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: insert into course_tags (course_id,tag) values (?,?)
+Hibernate: insert into course_tags (course_id,tag) values (?,?)
+Hibernate: insert into courses (category_id,created_at,description,duration_in_minutes,instructor_id,level,price,status,sub_category_id,thumbnail_url,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: insert into course_tags (course_id,tag) values (?,?)
+Hibernate: insert into course_tags (course_id,tag) values (?,?)
+Hibernate: insert into courses (category_id,created_at,description,duration_in_minutes,instructor_id,level,price,status,sub_category_id,thumbnail_url,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: insert into course_tags (course_id,tag) values (?,?)
+Hibernate: insert into course_tags (course_id,tag) values (?,?)
+Hibernate: insert into courses (category_id,created_at,description,duration_in_minutes,instructor_id,level,price,status,sub_category_id,thumbnail_url,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: insert into course_tags (course_id,tag) values (?,?)
+Hibernate: insert into course_tags (course_id,tag) values (?,?)
+Hibernate: insert into courses (category_id,created_at,description,duration_in_minutes,instructor_id,level,price,status,sub_category_id,thumbnail_url,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,?,?,?,?)
+Hibernate: insert into course_tags (course_id,tag) values (?,?)
+Hibernate: insert into course_tags (course_id,tag) values (?,?)
+2026-05-29T13:07:56.836+01:00  INFO 24644 --- [course-service] [  restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2026-05-29T16:45:52.356+01:00  WARN 24644 --- [course-service] [l-3:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Thread starvation or clock leap detected (housekeeper delta=3h26s870ms13µs600ns).
+2026-05-29T17:46:40.541+01:00  WARN 24644 --- [course-service] [l-3:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Thread starvation or clock leap detected (housekeeper delta=1h55s435ms395µs900ns).
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  04:54 h
+[INFO] Finished at: 2026-05-29T17:47:05+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:4.0.6:run (default-cli) on project course-service: Process terminated with exit code: -1 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

@@ -1,0 +1,9 @@
+package com.anouar.elearning.quiz.repository;
+
+import com.anouar.elearning.quiz.entity.AnswerOption;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface AnswerOptionRepository extends JpaRepository<AnswerOption, String> {
+}

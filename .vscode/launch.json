@@ -1,0 +1,74 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-AiServiceApplication<com.anouar.elearning-ai-service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.anouar.elearning.ai.AiServiceApplication",
+            "projectName": "com.anouar.elearning-ai-service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-AnalyticsServiceApplication<com.anouar.elearning-analytics-service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.anouar.elearning.analytics.AnalyticsServiceApplication",
+            "projectName": "com.anouar.elearning-analytics-service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-AuthServiceApplication<com.anouar.elearning-auth-service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.anouar.elearning.auth.AuthServiceApplication",
+            "projectName": "com.anouar.elearning-auth-service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-CourseServiceApplication<com.anouar.elearning-course-service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.anouar.elearning.course.CourseServiceApplication",
+            "projectName": "com.anouar.elearning-course-service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-NotificationServiceApplication<com.anouar.elearning-notification-service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.anouar.elearning.notification.NotificationServiceApplication",
+            "projectName": "com.anouar.elearning-notification-service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-PlatformServiceApplication<com.anouar.elearning-platform-service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.anouar.elearning.platform.PlatformServiceApplication",
+            "projectName": "com.anouar.elearning-platform-service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-QuizServiceApplication<com.anouar.elearning-quiz-service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.anouar.elearning.quiz.QuizServiceApplication",
+            "projectName": "com.anouar.elearning-quiz-service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
