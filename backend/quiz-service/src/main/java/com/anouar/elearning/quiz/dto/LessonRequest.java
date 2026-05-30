@@ -10,13 +10,12 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class QuizUpdateRequest {
-
-    @NotBlank(message = "Title is required")
+public class LessonRequest {
+    @NotBlank
+    private String courseId;
+    @NotBlank
+    private String chapterId;
+    @NotBlank
     private String title;
-
-    private String description;
-
-    // Optional: change the associated lesson
-    private String lessonId;
+    private String content;
 }

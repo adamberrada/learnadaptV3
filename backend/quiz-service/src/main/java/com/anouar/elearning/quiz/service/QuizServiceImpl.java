@@ -1,19 +1,55 @@
 package com.anouar.elearning.quiz.service;
 
-import com.anouar.elearning.quiz.dto.*;
-import com.anouar.elearning.quiz.entity.*;
-import com.anouar.elearning.quiz.exception.BusinessException;
-import com.anouar.elearning.quiz.exception.ForbiddenException;
-import com.anouar.elearning.quiz.exception.ResourceNotFoundException;
-import com.anouar.elearning.quiz.repository.*;
-import lombok.RequiredArgsConstructor;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
-import java.util.*;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import com.anouar.elearning.quiz.dto.AIRecommendationResponse;
+import com.anouar.elearning.quiz.dto.AiGenerateRequest;
+import com.anouar.elearning.quiz.dto.AnswerRequest;
+import com.anouar.elearning.quiz.dto.BaremeRequest;
+import com.anouar.elearning.quiz.dto.ChronoRequest;
+import com.anouar.elearning.quiz.dto.CourseAnalyticsResponse;
+import com.anouar.elearning.quiz.dto.GlobalResultsResponse;
+import com.anouar.elearning.quiz.dto.OptionRequest;
+import com.anouar.elearning.quiz.dto.QuestionDifficultyResponse;
+import com.anouar.elearning.quiz.dto.QuestionRequest;
+import com.anouar.elearning.quiz.dto.QuestionResponse;
+import com.anouar.elearning.quiz.dto.QuizCreateRequest;
+import com.anouar.elearning.quiz.dto.QuizResponse;
+import com.anouar.elearning.quiz.dto.QuizSubmissionResponse;
+import com.anouar.elearning.quiz.dto.QuizSubmitRequest;
+import com.anouar.elearning.quiz.dto.QuizUpdateRequest;
+import com.anouar.elearning.quiz.entity.AIRecommendation;
+import com.anouar.elearning.quiz.entity.AnswerOption;
+import com.anouar.elearning.quiz.entity.LearnerScore;
+import com.anouar.elearning.quiz.entity.Lesson;
+import com.anouar.elearning.quiz.entity.Question;
+import com.anouar.elearning.quiz.entity.Quiz;
+import com.anouar.elearning.quiz.entity.QuizStatus;
+import com.anouar.elearning.quiz.entity.QuizSubmission;
+import com.anouar.elearning.quiz.entity.SubmissionAnswer;
+import com.anouar.elearning.quiz.exception.BusinessException;
+import com.anouar.elearning.quiz.exception.ForbiddenException;
+import com.anouar.elearning.quiz.exception.ResourceNotFoundException;
+import com.anouar.elearning.quiz.repository.AIRecommendationRepository;
+import com.anouar.elearning.quiz.repository.AnswerOptionRepository;
+import com.anouar.elearning.quiz.repository.LearnerScoreRepository;
+import com.anouar.elearning.quiz.repository.LessonRepository;
+import com.anouar.elearning.quiz.repository.QuestionRepository;
+import com.anouar.elearning.quiz.repository.QuizRepository;
+import com.anouar.elearning.quiz.repository.QuizSubmissionRepository;
+import com.anouar.elearning.quiz.repository.SubmissionAnswerRepository;
+
+import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
@@ -21,6 +57,7 @@ import java.util.stream.Collectors;
 public class QuizServiceImpl implements QuizService {
 
     private final QuizRepository quizRepository;
+    private final LessonRepository lessonRepository;
     private final QuestionRepository questionRepository;
     private final AnswerOptionRepository optionRepository;
     private final QuizSubmissionRepository submissionRepository;
@@ -42,6 +79,11 @@ public class QuizServiceImpl implements QuizService {
                 .status(QuizStatus.DRAFT)
                 .createdBy(teacherId)
                 .build();
+        if (request.getLessonId() != null && !request.getLessonId().isBlank()) {
+            Lesson lesson = lessonRepository.findById(request.getLessonId())
+                    .orElseThrow(() -> new ResourceNotFoundException("Lesson not found: " + request.getLessonId()));
+            quiz.setLesson(lesson);
+        }
         return mapper.toQuizResponse(quizRepository.save(quiz), true);
     }
 
@@ -51,6 +93,15 @@ public class QuizServiceImpl implements QuizService {
         Quiz quiz = findOwnedQuiz(teacherId, quizId);
         quiz.setTitle(request.getTitle());
         quiz.setDescription(request.getDescription());
+        if (request.getLessonId() != null) {
+            if (request.getLessonId().isBlank()) {
+                quiz.setLesson(null);
+            } else {
+                Lesson lesson = lessonRepository.findById(request.getLessonId())
+                        .orElseThrow(() -> new ResourceNotFoundException("Lesson not found: " + request.getLessonId()));
+                quiz.setLesson(lesson);
+            }
+        }
         return mapper.toQuizResponse(quizRepository.save(quiz), true);
     }
 

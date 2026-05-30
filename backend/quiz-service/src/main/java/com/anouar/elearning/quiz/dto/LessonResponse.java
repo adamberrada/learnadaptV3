@@ -1,9 +1,6 @@
 package com.anouar.elearning.quiz.dto;
 
 import java.time.LocalDateTime;
-import java.util.List;
-
-import com.anouar.elearning.quiz.entity.QuizStatus;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,19 +11,13 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class QuizResponse {
+public class LessonResponse {
     private String id;
     private String courseId;
     private String chapterId;
     private String title;
-    private String description;
-    private Integer timeLimitInMinutes;
-    private Integer passingScore;
-    private Integer totalPoints;
-    private QuizStatus status;
+    private String content;
     private String createdBy;
-    private List<QuestionResponse> questions;
-    private com.anouar.elearning.quiz.dto.LessonResponse lesson;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }

@@ -1,21 +1,12 @@
 package com.anouar.elearning.quiz.entity;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.OrderBy;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -25,12 +16,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "quizzes")
+@Table(name = "lessons")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Quiz {
+public class Lesson {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -45,30 +36,11 @@ public class Quiz {
     @Column(nullable = false)
     private String title;
 
-    @Column(length = 2000)
-    private String description;
-
-    @Column(nullable = false)
-    private Integer timeLimitInMinutes;
-
-    @Column(nullable = false)
-    private Integer passingScore;
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private QuizStatus status;
+    @Column(length = 10000)
+    private String content;
 
     @Column(nullable = false)
     private String createdBy;
-
-    @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL, orphanRemoval = true)
-    @OrderBy("orderIndex ASC")
-    @Builder.Default
-    private List<Question> questions = new ArrayList<>();
-
-    @OneToOne
-    @JoinColumn(name = "lesson_id")
-    private Lesson lesson;
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

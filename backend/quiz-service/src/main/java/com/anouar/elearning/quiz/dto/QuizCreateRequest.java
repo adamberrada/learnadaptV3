@@ -32,4 +32,7 @@ public class QuizCreateRequest {
     @NotNull(message = "Passing score is required")
     @Min(value = 0, message = "Passing score must be greater than or equal to 0")
     private Integer passingScore;
+
+    // Optional: associate an existing lesson to the quiz
+    private String lessonId;
 }

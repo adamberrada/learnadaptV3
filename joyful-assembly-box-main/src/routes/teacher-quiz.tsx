@@ -62,6 +62,9 @@ function TeacherQuizPage() {
   const [description, setDescription] = useState<string>("");
   const [timeLimitInMinutes, setTimeLimitInMinutes] = useState<number>(10);
   const [passingScore, setPassingScore] = useState<number>(2);
+  const [lessonId, setLessonId] = useState<string>("");
+  const [lessonTitle, setLessonTitle] = useState<string>("");
+  const [lessonContent, setLessonContent] = useState<string>("");
 
   const [quiz, setQuiz] = useState<QuizResponse | null>(null);
   const [loading, setLoading] = useState(false);
@@ -107,6 +110,7 @@ function TeacherQuizPage() {
           chapterId: chapterId.trim(),
           title: title.trim(),
           description: description.trim() || null,
+          lessonId: lessonId || null,
           timeLimitInMinutes,
           passingScore,
         }),
@@ -224,6 +228,52 @@ function TeacherQuizPage() {
           <Field label="Course Id" value={courseId} onChange={setCourseId} placeholder="courseId" />
           <Field label="Chapter Id" value={chapterId} onChange={setChapterId} placeholder="chapterId" />
           <Field label="Title" value={title} onChange={setTitle} placeholder="Chapter Quiz" />
+          <Field label="Lesson Id (optional)" value={lessonId} onChange={setLessonId} placeholder="(optional)" />
+          <label className="block">
+            <span className="text-sm font-medium text-foreground">Create lesson</span>
+            <textarea
+              value={lessonContent}
+              onChange={(e) => setLessonContent(e.target.value)}
+              placeholder="Lesson content (optional)"
+              className="mt-1.5 w-full rounded-md border border-input bg-background px-3 py-2 text-sm shadow-sm outline-none focus:border-ring focus:ring-2 focus:ring-ring/30"
+            />
+            <input
+              value={lessonTitle}
+              onChange={(e) => setLessonTitle(e.target.value)}
+              placeholder="Lesson title (optional)"
+              className="mt-2 w-full rounded-md border border-input bg-background px-3 py-2 text-sm shadow-sm outline-none focus:border-ring focus:ring-2 focus:ring-ring/30"
+            />
+            <div className="mt-2">
+              <button
+                onClick={async () => {
+                  if (!lessonTitle.trim()) return setError("Lesson title is required to create lesson");
+                  setLoading(true);
+                  try {
+                    const res = await fetch("/api/teacher/lessons", {
+                      method: "POST",
+                      headers,
+                      body: JSON.stringify({
+                        courseId: courseId.trim() || courseId,
+                        chapterId: chapterId.trim() || chapterId,
+                        title: lessonTitle.trim(),
+                        content: lessonContent.trim() || null,
+                      }),
+                    });
+                    const payload = await res.json();
+                    if (!res.ok || !payload?.success) throw new Error(payload?.message || "Create lesson failed");
+                    setLessonId(payload.data.id);
+                  } catch (e) {
+                    setError(e instanceof Error ? e.message : String(e));
+                  } finally {
+                    setLoading(false);
+                  }
+                }}
+                className="mt-2 rounded-md bg-foreground px-3 py-1 text-sm font-semibold text-background disabled:opacity-60"
+              >
+                Create lesson
+              </button>
+            </div>
+          </label>
           <Field
             label="Time limit (minutes)"
             value={String(timeLimitInMinutes)}

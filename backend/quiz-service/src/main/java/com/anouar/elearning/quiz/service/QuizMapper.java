@@ -1,14 +1,28 @@
 package com.anouar.elearning.quiz.service;
 
-import com.anouar.elearning.quiz.dto.*;
-import com.anouar.elearning.quiz.entity.*;
-import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
+import com.anouar.elearning.quiz.dto.AIRecommendationResponse;
+import com.anouar.elearning.quiz.dto.OptionResponse;
+import com.anouar.elearning.quiz.dto.QuestionResponse;
+import com.anouar.elearning.quiz.dto.QuizResponse;
+import com.anouar.elearning.quiz.dto.QuizSubmissionResponse;
+import com.anouar.elearning.quiz.dto.SubmissionAnswerResponse;
+import com.anouar.elearning.quiz.entity.AIRecommendation;
+import com.anouar.elearning.quiz.entity.AnswerOption;
+import com.anouar.elearning.quiz.entity.Question;
+import com.anouar.elearning.quiz.entity.Quiz;
+import com.anouar.elearning.quiz.entity.QuizSubmission;
+import com.anouar.elearning.quiz.entity.SubmissionAnswer;
+
 @Component
 public class QuizMapper {
+
+    @org.springframework.beans.factory.annotation.Autowired
+    private LessonMapper lessonMapper;
 
     public QuizResponse toQuizResponse(Quiz quiz, boolean includeCorrectAnswers) {
         return QuizResponse.builder()
@@ -23,6 +37,7 @@ public class QuizMapper {
                 .status(quiz.getStatus())
                 .createdBy(quiz.getCreatedBy())
                 .questions(toQuestionResponses(quiz.getQuestions(), includeCorrectAnswers))
+                .lesson(lessonMapper.toResponse(quiz.getLesson()))
                 .createdAt(quiz.getCreatedAt())
                 .updatedAt(quiz.getUpdatedAt())
                 .build();

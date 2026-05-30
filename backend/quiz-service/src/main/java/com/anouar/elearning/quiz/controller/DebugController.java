@@ -3,6 +3,7 @@ package com.anouar.elearning.quiz.controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +23,7 @@ public class DebugController {
     private final QuizMapper quizMapper;
 
     @GetMapping("/quizzes")
+    @Transactional(readOnly = true)
     public ResponseEntity<List<QuizResponse>> listAllQuizzes() {
         List<QuizResponse> responses = quizRepository.findAll().stream()
                 .map(q -> quizMapper.toQuizResponse(q, false))
