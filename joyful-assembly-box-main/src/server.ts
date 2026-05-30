@@ -52,6 +52,15 @@ function selectBackendBaseUrl(env: unknown, pathname: string): string | null {
     return resolveBaseUrl(env, "QUIZ_SERVICE_URL", "http://localhost:8083");
   }
 
+  // Lessons are owned by the quiz-service as well (teacher/admin flows).
+  if (
+    pathname.startsWith("/api/teacher/lessons") ||
+    pathname.startsWith("/api/admin/lessons") ||
+    pathname.startsWith("/api/learner/lessons")
+  ) {
+    return resolveBaseUrl(env, "QUIZ_SERVICE_URL", "http://localhost:8083");
+  }
+
   if (pathname.startsWith("/api/teacher/courses")) {
     return resolveBaseUrl(env, "COURSE_SERVICE_URL", "http://localhost:8082");
   }

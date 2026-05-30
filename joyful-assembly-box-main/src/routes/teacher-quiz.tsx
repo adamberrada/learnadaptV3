@@ -63,6 +63,7 @@ function TeacherQuizPage() {
   const [timeLimitInMinutes, setTimeLimitInMinutes] = useState<number>(10);
   const [passingScore, setPassingScore] = useState<number>(2);
   const [lessonId, setLessonId] = useState<string>("");
+  const [existingQuizId, setExistingQuizId] = useState<string>("");
   const [lessonTitle, setLessonTitle] = useState<string>("");
   const [lessonContent, setLessonContent] = useState<string>("");
 
@@ -228,19 +229,19 @@ function TeacherQuizPage() {
           <Field label="Course Id" value={courseId} onChange={setCourseId} placeholder="courseId" />
           <Field label="Chapter Id" value={chapterId} onChange={setChapterId} placeholder="chapterId" />
           <Field label="Title" value={title} onChange={setTitle} placeholder="Chapter Quiz" />
-          <Field label="Lesson Id (optional)" value={lessonId} onChange={setLessonId} placeholder="(optional)" />
+          <Field label="Lesson Id " value={lessonId} onChange={setLessonId} placeholder="" />
           <label className="block">
             <span className="text-sm font-medium text-foreground">Create lesson</span>
             <textarea
               value={lessonContent}
               onChange={(e) => setLessonContent(e.target.value)}
-              placeholder="Lesson content (optional)"
+              placeholder="Lesson content"
               className="mt-1.5 w-full rounded-md border border-input bg-background px-3 py-2 text-sm shadow-sm outline-none focus:border-ring focus:ring-2 focus:ring-ring/30"
             />
             <input
               value={lessonTitle}
               onChange={(e) => setLessonTitle(e.target.value)}
-              placeholder="Lesson title (optional)"
+              placeholder="Lesson title"
               className="mt-2 w-full rounded-md border border-input bg-background px-3 py-2 text-sm shadow-sm outline-none focus:border-ring focus:ring-2 focus:ring-ring/30"
             />
             <div className="mt-2">
@@ -290,6 +291,28 @@ function TeacherQuizPage() {
         </div>
 
         <div className="mt-5 flex items-center gap-3">
+          <label className="block">
+            <span className="text-sm font-medium text-foreground">Existing Quiz Id</span>
+            <div className="mt-1 flex items-center gap-2">
+              <input
+                value={existingQuizId}
+                onChange={(e) => setExistingQuizId(e.target.value)}
+                placeholder="paste quiz id here"
+                className="w-72 rounded-md border border-input bg-background px-3 py-2 text-sm shadow-sm outline-none focus:border-ring focus:ring-2 focus:ring-ring/30"
+              />
+              <button
+                onClick={() => {
+                  if (!existingQuizId.trim()) return setError("Provide a quiz id");
+                  // Use the provided quiz id as the current quiz context so questions can be added.
+                  setQuiz({ id: existingQuizId.trim(), courseId: courseId.trim(), chapterId: chapterId.trim(), title: "(existing)", description: null, timeLimitInMinutes: null, passingScore: null, totalPoints: null, status: null, questions: [] });
+                  setQOrder(0);
+                }}
+                className="rounded-md bg-foreground px-3 py-1 text-sm font-semibold text-background disabled:opacity-60"
+              >
+                Use quiz id
+              </button>
+            </div>
+          </label>
           <button
             onClick={() => void createQuiz()}
             disabled={loading}
@@ -322,7 +345,7 @@ function TeacherQuizPage() {
       </div>
 
       <div className="mt-6 rounded-2xl border border-border bg-card p-6 shadow-card">
-        <p className="text-sm font-semibold">2) Add question</p>
+        <p className="text-sm font-semibold">2 Add question</p>
         <p className="mt-1 text-sm text-muted-foreground">
           Add at least one question before publishing.
         </p>
@@ -387,7 +410,7 @@ function TeacherQuizPage() {
       </div>
 
       <div className="mt-6 rounded-2xl border border-border bg-card p-6 shadow-card">
-        <p className="text-sm font-semibold">3) Test learner fetch</p>
+        <p className="text-sm font-semibold">3 Test learner fetch</p>
         <p className="mt-1 text-sm text-muted-foreground">
           After publishing, open the learner quiz page and load the same chapterId.
         </p>

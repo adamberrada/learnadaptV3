@@ -151,7 +151,10 @@ public class QuizServiceImpl implements QuizService {
                 .toList();
         savedQuestion.setOptions(optionRepository.saveAll(options));
         quiz.getQuestions().add(savedQuestion);
-        validatePassingScore(quiz.getPassingScore(), mapper.totalPoints(quiz));
+        // Allow adding questions incrementally even when the configured passing
+        // score is higher than the current total points. Passing-score validation
+        // will run when the passing score is set explicitly and when the quiz
+        // is validated/published.
         return mapper.toQuestionResponse(savedQuestion, true);
     }
 
